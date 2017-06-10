@@ -14,59 +14,15 @@ body{
     "Segoe UI", "Roboto", "Oxygen", 
     "Ubuntu", "Cantarell", "Fira Sans", 
     "Droid Sans", "Helvetica Neue", sans-serif;
-	color: #C9D9DF;
+	color: #3D372E;
 	line-height: 120%;
 	box-sizing: border-box;
-	background-color: #588193;
-	/*background-image: url(../images/furley_bg.png);
-	background-repeat: repeat;*/
+	background-color: #FCE4BE;
+	background-image: url(../images/critter.png);
+	background-repeat: no-repeat;
 }
 
-header {
-	width:100%;  
-	margin-right: auto;
-	margin-left: auto;
-	margin-bottom: 40px;
-	background-color: #fff;
-	border-bottom: 2px solid #ccc;
-	overflow: hidden;
-}
 
-nav {
-	float: right;
-	padding-top: 30px;
-}
-
-nav ul { 
-	float: right;
-	margin: 0px;
-	
-}
-
-nav ul li {
-	float:right;
-	display: inline;
-	padding-left:16px;
-	font-size: 1em;
-	font-weight: normal;
-	margin: 0px;
-	text-decoration: none;
-}
-
-nav ul li a {
-	text-decoration: none;
-	color: #777777;
-}
-nav ul li a:hover {
-	font-weight: bold;
-	color: #b7b7b7;
-}
-
-/*nav ul li a:visited {
-	font-weight: normal;
-	color: #b7b7b7;
-}
-*/
 main { 
 	margin: auto;
 	width: 960px;
@@ -74,25 +30,6 @@ main {
 	overflow: hidden;
 }
 
-section {
-	background-color: #fff;
-	width: 650px;
-
-}
-
-article  {
-	border: 1px solid #dddddd;
-	padding: 30px;
-	width: 100%;
-	overflow: hidden;
-}
-		
-aside {
-	background-color: #fff;
-	border: 1px solid #ddd;
-	width: 270px;
-	padding: 30px 30px;
-}
 
 input {
 	width: 100%;
@@ -135,8 +72,6 @@ footer {
 	margin-top: 15px;
 	margin-right: auto;
 	margin-left: auto;
-	background: #274051;
-	border-top: 5px solid #4aaaa5;
 	margin-top: 40px;
 	width: 100%;
 	color: #fff;
@@ -149,13 +84,12 @@ footer {
 /* logo*/
 h1 {
 	font-family: 'EB Garamond', serif;
-	font-size: 1.75em;
+	font-size: 3em;
 	font-weight: bolder;
 	text-align: center;
 	letter-spacing: .75px;
-	color: #fff;
-	background-color: #4aaaa5;
 	padding: 30px;
+	color: #618BB0;
 
 }
 /*heading*/
@@ -190,37 +124,11 @@ p {
 	font-size: .85em;
 }
 
-.heading{ 
-	font-family: 'EB Garamond', serif;
-	color: #4aaaa5;
-	border-bottom: 2px solid #cccccc;
-	padding-bottom: 20px;
-	margin-bottom: 20px;
-}
-
-.mast_box {
-	width: 960px;
-	margin-right: auto;
-	margin-left: auto;
-	height: 100%;
-	overflow: hidden;
-	position: relative;
-
-}
-	
-.right {
-	float: right;
-}
-.left {
-	float: left;
-}
-
-.right {
-	float: right
-}
-
-.clear {
-	clear: both;
+a {
+	text-decoration: none;
+	font-size: 1em;
+	font-style: italic;
+	color: inherit;
 }
 
 /*
