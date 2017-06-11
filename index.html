@@ -1,58 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-    <!--meta name=”description” content=”155 characters of message matching text with a call to action goes here”-->
-    <meta name="API Homework" content="">
-    <!-- Up to 70 Characters of Keyword-relevant text here -->
-    <title>Critter Giphy</title>
-    <!--Faviocon-->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <!--Myers reset-->
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <!-- google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-    <!-- Latest compiled and minified CSS
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <!-- Optional theme
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
-    <!--Local CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-</head>
+    <head>
+        <meta charset="utf-8">  
+        <!--somewhat responsive-->    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--meta name=”description” content=”155 characters of message matching text with a call to action goes here”-->
+        <meta name="Week 6 homework assignment" content="Just off Lake Shore Drive, A Creative Upstart for Print Design, Experiential Modeling and one Day Full Stack Development, maybe.">
+            <!-- Up to 70 Characters of Keyword-relevant text here -->
+            <title>G is for Giphy</title>
+        <!--Faviocon-->
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon"> 
+        <!--Myers reset-->
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <!-- google fonts, when in doubt use caslon but not available-->
+        <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet"> 
+        <!--Local CSS-->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    </head>
+
 <body>
+        <!-- Rendered Buttons will get placed Here  -->
+        <div class="buttons-view"></div>
+        <form>
+            <label for="critter-input">Add a Critter</label>
+            <input type="text" id="critter-input"> <!-- validation will not allow class for for-->
+            <!-- Button triggers new topic to be added -->
+            <input class="addCritter" type="submit" value="Search">
+        </form>
+  <div class="container">
 
-<main class="container">
-    <h1>Critter Search</h1>
+        <!-- critters will Get Dumped here -->
+        <div class="critterView"></div>
 
-
-    <!-- Rendered Buttons will get Dumped Here  -->
-    <div id="buttons-view"></div>
-
-    <form id="critter-form">
-      <label for="critter-input">ADD A WEE CRITTER</label>
-      <input type="text" id="critter-input"><br>
-
-      <!-- Button triggers new critter to be added -->
-      <input id="add-critter" type="submit" value="Add a Critter Button">
-    </form>
- <!-- critters will Get Dumped Dere -->
-    <div id="critters-view"></div>
- 
-</main>
+</div>
 <footer>
-    <h1> G is for Giphy</h1>
-    <h5> Critter font by <a href="http://www.craigfrazier.com/">Craig Frazier,</a>
-		published by <a href="http://www.adobe.com/products/type.html">Adobe</a>
-		 </h5>
-    <!--iconography-->
+        <h1>G is for Giphy</h1>
+        <h5> Colophon: Critters font designed by <a href="http://www.craigfrazier.com/">Craig Frazier</a> published by <a href="http://www.adobe.com/products/type/font-designers/craig-frazier.html">Adobe</a></h5>
 </footer>
-<script type="text/javascript" src="assets/javascript/javascript.js"></script>
-<!-- jQuery library
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-<!-- Latest compiled Bootstrap JavaScript
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+
+
+<!--========================================================-->
+<!--Begin javaScripting, AJAX and jQuery-->
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+
+            // Initial array of critters
+            var critters = ["Ape", "Eel", "Iguana", "Otter", "Sea Urchin", "Yak"];
+
+            // display Critter Information function now re-renders the HTML to display the appropriate content. 
+            function displayTopicInfo() {
+
+                var topic = $(this).attr('data-name');
+                var queryURL = "https://crossorigin.me/http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=dc6zaTOxFJmzC";
+
+                // Creates AJAX call for the specific topic  
+                $.ajax({
+                    url: queryURL,
+                    method: 'GET'
+                }).done(function(response) {
+
+                    $('.critterView').empty(); //clean out hopper between 
+
+                    for (var i = 0; i < 10; i++) {
+
+                        // Creates a div to hold the new critter
+                        var critterDiv = $('<div class="critterDiv">');
+
+                        // Retrieves the Rating Data
+                        var rating = response.data[i].rating;
+
+                        // Creates an element to have the rating displayed
+                        var pOne = $('<p>').text("Rating: " + rating);
+
+                        // Displays the rating
+                        critterDiv.append(pOne);
+                        // Appends the image
+                        critterDiv.append(image);
+
+                        // Creates an element to hold the image 
+                        var image = $('<img class="startImg">').attr("src", response.data[i].images.fixed_height_still.url);
+                        image.attr("data-still", response.data[i].images.fixed_height_still.url);
+                        image.attr("data-animate", response.data[i].images.original.url);
+                        image.attr("data-convert", "still");
+
+                        // Puts the entire topic above the previous critters.
+                        $('.critterView').prepend(critterDiv);
+
+                    }
+                });
+            }
+
+            // Function for displaying topic data 
+            function renderButtons() {
+
+
+                // Deletes the critters prior to adding new critters.
+                $('.buttons-view').empty();
+
+                // Loops through the array of critters
+                for (var i = 0; i < critters.length; i++) {
+
+                    // Then dynamically generates buttons for each topic in the array
+                // Sets the variable to = the jQuery call for <button> to write th <button<button/> tags
+                    var a = $('<button>'); 
+                    a.addClass('critterBtn'); // Added a class 
+                    a.attr('data-name', critters[i]); // Added a data-attribute
+                    a.text(critters[i]); // Provided the initial button text
+                    $('.buttons-view').append(a); // Added the button to the HTML
+                }
+            }
+
+            // This function handles events where one button is clicked
+            $('.addCritter').on('click', function() {
+
+                // This line of code will grab the input from the textbox
+                var topic = $('#critter-input').val().trim();
+
+                // The topic from the textbox is then added to the array
+                critters.push(topic);
+
+                // The array then runs which handles the processing of the topic array
+                renderButtons();
+                $('#critter-input').attr("value", "");
+                $('#critter-input').val('');
+
+                // This line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
+                return false;
+
+            });
+
+
+            // Generic function for displaying the topicInfo
+            $(document).on('click', '.critterBtn', displayTopicInfo);
+            $(document).on('click', '.startImg', function() {
+                var state = $(this).attr('data-convert');
+                if (state == 'still') {
+                    $(this).attr('src', $(this).data('animate'));
+                    $(this).attr('data-convert', 'animate');
+                } else {
+                    $(this).attr('src', $(this).data('still'));
+                    $(this).attr('data-convert', 'still');
+                }
+
+            });
+
+            // This calls the renderButtons() function
+            renderButtons();
+
+        });
+        </script>
 </body>
 
 </html>

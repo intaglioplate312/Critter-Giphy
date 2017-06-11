@@ -1,6 +1,6 @@
 * {
 	margin: auto;
-	border: 2px solid red;
+	
 
 }
 html {
@@ -20,8 +20,10 @@ body{
 	background-color: #FCE4BE;
 	background-image: url(../images/critter.png);
 	background-repeat: no-repeat;
+    background-position: bottom center;
+    background-attachment: fixed;
+    background-size: 768px;
 }
-
 
 main { 
 	margin: auto;
@@ -30,42 +32,56 @@ main {
 	overflow: hidden;
 }
 
-
-input {
-	width: 100%;
-}
-
-input[type=text] {
-    width: 100%;
-    padding: 12px 10px;
-	margin: 5px 0px 15px 0px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: .85em;
-    color: #919191;
-}
-
-
-input[type=button], input[type=submit], input[type=reset] {
-    background-color: #4aaaa5;
-    border: none;
+.critterBtn {
+	background-color: #BEDFFC;
+    border: 3px solid #FFF0D9;
     color: white;
-    padding: 16px 32px;
+    padding: 10px 10px;
     text-decoration: none;
-    margin: 4px 2px;
+    margin: 4px 4px;
     cursor: pointer;
     font-size: 1em;
-    width: 25%;
+	min-width: 15%;
+	border-radius: 7px;
+	text-transform: uppercase;
+
 }
-textarea {
-	width: 100%;
-	border: 1px solid #ccc;
-	padding: 12px 10px;
-	margin: 5px 0px 15px 0px;
-	color: #919191;
-	font-size: .85em;
+
+form {
+	background-color: #BEDFFC; 
+	padding: 10px 10px;
+    text-decoration: none;
+    width: 100%;
 }
+
+label {
+	color: white;
+    padding: 10px 10px;
+    font-size: 1.25em;
+  	font-weight: bolder;
+}
+
+#critter-input {
+	padding: 5px 10px;
+    font-size: 1em;
+    min-width: 20%;
+    background-color: #FFF0D9; 
+}
+input.addCritter { 
+	color: white;
+    padding: 5px 20px;
+    font-size: 1.25em;
+  	font-weight: bolder;
+  	background-color: #BEDFFC;
+  	border-radius: 7px;
+}
+
+.container {
+	margin: auto;
+	padding: 40px;
+	}
+
+
 footer {
 	clear: both;
 	text-align: center;
@@ -97,31 +113,41 @@ h2 {
 	font-size: 1.75em;
 	font-weight: bolder;
 	line-height: 150%;
+	color: #7D715E;
 }
 /*side bar header*/
 h3 {
 	font-size: 1.25em;
 	font-weight: bold;
 	line-height: 75%;
+	color: #7D715E;
 }
 /*gallery labels, contact labels*/
 h4 {
 	font-size: 1.1em;
+	color: #BDAB8E;
 }
 
 h5 {
 	font-size: 1em;
 	font-style: italic;
+	color: #BDAB8E;
+	text-align: center;
+	margin-bottom: 25px;
 }
 /* footer*/
 h6 {
 	font-size: .75em;
 	letter-spacing: .75px;
 	padding: 30px 0px 30px 0px;
+	color: #FFF0D9;
 }
 
 p {
 	font-size: .85em;
+	color: #B09873;
+	text-transform: uppercase;
+	margin-top: 1em;
 }
 
 a {
@@ -132,11 +158,13 @@ a {
 }
 
 /*
-324953 footer darkest blue
-86C4DF footer  text lightest blue
-588193 medium blue
-608CA0 ligth blue
-496B79 dark blue
-
-C9D9DF text
-937858 text Display
+ # 3D372E dk brown
+background FCE4BE
+highlight light FFF0D9
+#E3CDAA
+#BDAB8E
+#B09873
+low Light #7D715E
+contrast 618BB0 dk blue
+contrast BEDFFC light blue
+*/
