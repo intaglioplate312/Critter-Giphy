@@ -80,7 +80,10 @@ input.addCritter {
 	margin: auto;
 	padding: 40px;
 	}
-
+.critterDiv {
+	float: left;
+	margin: 5px;
+}
 
 footer {
 	clear: both;
