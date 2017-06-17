@@ -118,6 +118,10 @@
                 console.log(critters);
                 // The array then runs which handles the processing of the topic array
                 renderButtons();
+            
+            //Empty input field after new button is made
+            $('#critter-input').attr("value", "");
+-           $('#critter-input').val("");
             }
             // This line so that users can hit "enter" instead of clicking on the button and it won't move to the next page
             return false;
